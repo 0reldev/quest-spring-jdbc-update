@@ -19,7 +19,6 @@ public class WizardController {
                                   @RequestParam Long id) {
 
         model.addAttribute("wizard", repository.findById(id));
-
         return "wizard_update";
     }
 
@@ -33,6 +32,7 @@ public class WizardController {
                              @RequestParam(required = false, defaultValue = "") String biography,
                              @RequestParam(required = false, defaultValue = "false") boolean muggle
     ) {
+
         model.addAttribute("wizard", repository.update(id, firstName, lastName,
                 birthday, birthPlace, biography, muggle));
 

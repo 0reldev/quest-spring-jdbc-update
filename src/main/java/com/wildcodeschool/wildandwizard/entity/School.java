@@ -11,6 +11,7 @@ public class School {
     }
 
     public School(Long id, String name, Long capacity, String country) {
+
         this.id = id;
         this.name = name;
         this.capacity = capacity;

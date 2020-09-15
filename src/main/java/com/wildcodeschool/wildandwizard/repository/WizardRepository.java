@@ -22,6 +22,7 @@ public class WizardRepository {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -37,13 +38,16 @@ public class WizardRepository {
             statement.setLong(7, id);
 
             if (statement.executeUpdate() != 1) {
+
                 throw new SQLException("failed to update data");
             }
             return new Wizard(id, firstName, lastName, birthday,
                     birthPlace, biography, muggle);
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
         }
@@ -56,6 +60,7 @@ public class WizardRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -66,6 +71,7 @@ public class WizardRepository {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
+
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
                 Date birthday = resultSet.getDate("birthday");
@@ -75,8 +81,10 @@ public class WizardRepository {
                 return new Wizard(id, firstName, lastName, birthday, birthPlace, biography, muggle);
             }
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);

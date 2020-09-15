@@ -16,8 +16,8 @@ public class SchoolController {
     public String getSchoolUpdate(Model model,
                                   @RequestParam Long id
     ) {
-        model.addAttribute("school", repository.findById(id));
 
+        model.addAttribute("school", repository.findById(id));
         return "school_update";
     }
 
@@ -28,8 +28,8 @@ public class SchoolController {
                                    @RequestParam Long capacity,
                                    @RequestParam String country
     ) {
-        model.addAttribute("school", repository.update(id, name, capacity, country));
 
+        model.addAttribute("school", repository.update(id, name, capacity, country));
         return "school_get";
     }
 }
